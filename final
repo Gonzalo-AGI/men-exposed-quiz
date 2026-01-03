@@ -1,0 +1,629 @@
+<!-- ✅ Move styles to the top -->
+<style>
+   .quiz-results {
+     max-width: 600px;
+     margin: 50px auto;
+     padding: 30px;
+     font-family: 'Helvetica Neue', sans-serif;
+     text-align: center;
+   }
+ 
+  h1 {
+     font-size: 48px;
+     font-weight: 700;
+     margin-bottom: 20px;
+     color: #1a325d;
+   }
+ 
+  h2 {
+     font-size: 24px;
+     margin-bottom: 20px;
+     color: #111;
+   }
+ 
+.highlight-block {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0169a7, #a0bede); 
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+  h3#greeting {
+     font-size: 20px;
+     margin-bottom: 30px;
+     color: #555;
+   }
+
+   .bar-bg {
+     background: #eee;
+     border-radius: 20px;
+     height: 16px;
+     margin: 10px auto 10px;
+     overflow: hidden;
+     width: 100%;
+   }
+
+   .bar {
+     height: 100%;
+     transition: width 1s ease-in-out;
+   }
+
+ #bar-sheep { background: #0169a7; }
+ #bar-love_bird { background: #dfeb05; }
+ #bar-owl { background: #049109; }
+ #bar-rhino { background: #db1304; }
+
+  .summary-text {
+     margin-top: 10px;
+     font-size: 16px;
+     line-height: 1.5;
+     color: #444;
+   }
+ 
+  .cta-wrapper {
+   margin-top: 10px;
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+   flex-wrap: wrap;
+ }
+ 
+  .alt-btn {
+     background-color: #0169a7;
+     color: white;
+     font-weight: 600;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     padding: 20px 36px;
+     border-radius: 12px;
+     text-decoration: none;
+     transition: all 0.3s ease;
+     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+     font-size: 20px;
+   }
+ 
+  .alt-btn:hover {
+     background-color: #095785;
+     transform: translateY(-2px);
+   }
+
+   @media (max-width: 640px) {
+     .cta-wrapper {
+       flex-direction: column;
+       align-items: center;
+     }
+     .alt-btn {
+       width: 100%;
+       max-width: 280px;
+       margin-bottom: 12px;
+     }
+     .greeting-text {
+       font-size: 18px;
+       line-height: 1.6;
+       margin-bottom: 20px;
+     }
+   }
+
+   .quiz-results {
+     padding-bottom: 10px;
+     margin-bottom: 0px;
+   }
+
+ .highlight-name {
+   font-weight: 800;
+   background: linear-gradient(to right, #1b5fa8, #a0bede);
+   padding: 2px 6px;
+   border-radius: 6px;
+   color: #ffffff;
+ }
+
+ /* helper for hidden sections */
+ .animal-section { display: none; }
+</style>
+ 
+<!-- ✅ Top summary / bars -->
+<div class="quiz-results">
+  <h1>Your Men Exposed Results!</h1>
+  <h3 id="greeting" class="greeting-text"></h3>
+  <h2 id="result-title"></h2>
+  <p id="result-description" class="summary-text"></p>
+
+  <!-- Scores -->
+  <p>🐑 Sheep Personality: <span id="score-sheep">0%</span></p>
+  <div class="bar-bg"><div class="bar" id="bar-sheep"></div></div>
+ 
+  <p>🦜 Love Bird Personality: <span id="score-love_bird">0%</span></p>
+  <div class="bar-bg"><div class="bar" id="bar-love_bird"></div></div>
+ 
+  <p>🦉 Owl Personality: <span id="score-owl">0%</span></p>
+  <div class="bar-bg"><div class="bar" id="bar-owl"></div></div>
+ 
+  <p>🦏 Rhino Personality: <span id="score-rhino">0%</span></p>
+  <div class="bar-bg"><div class="bar" id="bar-rhino"></div></div>
+</div>
+ 
+<!-- ✅ Script: compute winner, set bars, show only the right section -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const params = new URLSearchParams(window.location.search);
+
+  let sheep = parseInt(params.get("sheep")) || 0;
+  let love_bird = parseInt(params.get("love_bird")) || 0;
+  let owl = parseInt(params.get("owl")) || 0;
+  let rhino = parseInt(params.get("rhino")) || 0;
+
+  // Optional override: ?animal=sheep|love_bird|owl|rhino
+  const animalOverride = (params.get("animal") || "").trim();
+  if (["sheep", "love_bird", "owl", "rhino"].includes(animalOverride)) {
+    sheep     = (animalOverride === "sheep") ? 100 : 0;
+    love_bird = (animalOverride === "love_bird") ? 100 : 0;
+    owl       = (animalOverride === "owl") ? 100 : 0;
+    rhino     = (animalOverride === "rhino") ? 100 : 0;
+  }
+
+  const firstName = params.get("first_name") || "Leader";
+
+  // Calculate total & percentages
+  const total = sheep + love_bird + owl + rhino;
+  const sheepPercent = total ? Math.round((sheep / total) * 100) : 0;
+  const love_birdPercent = total ? Math.round((love_bird / total) * 100) : 0;
+  const owlPercent = total ? Math.round((owl / total) * 100) : 0;
+  const rhinoPercent = total ? Math.round((rhino / total) * 100) : 0;
+
+  document.getElementById("score-sheep").textContent = sheepPercent + "%";
+  document.getElementById("bar-sheep").style.width = sheepPercent + "%";
+  document.getElementById("score-love_bird").textContent = love_birdPercent + "%";
+  document.getElementById("bar-love_bird").style.width = love_birdPercent + "%";
+  document.getElementById("score-owl").textContent = owlPercent + "%";
+  document.getElementById("bar-owl").style.width = owlPercent + "%";
+  document.getElementById("score-rhino").textContent = rhinoPercent + "%";
+  document.getElementById("bar-rhino").style.width = rhinoPercent + "%";
+
+  // Decide winner with deterministic top-two tiebreak
+  const scoresRaw = { sheep, love_bird, owl, rhino };
+  const secondaryOrder = ["sheep", "love_bird", "owl", "rhino"];
+  const animals = Object.keys(scoresRaw).sort((a,b) => {
+    if (scoresRaw[b] !== scoresRaw[a]) return scoresRaw[b] - scoresRaw[a];
+    return secondaryOrder.indexOf(a) - secondaryOrder.indexOf(b);
+  });
+  const topTwo = animals.slice(0,2);
+  const topAnimal = (scoresRaw[topTwo[0]] === scoresRaw[topTwo[1]]) ? topTwo[0] : animals[0];
+
+  // Result banner text
+  const titles = {
+    sheep: "You mainly identify under <span class='highlight-block'>Sheep (The Steadfast)</span>🐑",
+    love_bird: "You mainly identify under <span class='highlight-block'>Love Bird (The Connector)</span>🦜",
+    owl: "You mainly identify under <span class='highlight-block'>Owl (The Strategist)</span>🦉",
+    rhino: "You mainly identify under <span class='highlight-block'>Rhino (The Driver)</span>🦏"
+  };
+  const descs = {
+    sheep:"The Quiet Anchor. You bring calm, loyalty, and stability into relationships. But avoiding conflict and staying silent too long can slowly create distance instead of peace.",
+    love_bird: "The Emotional Pulse. You feel deeply and crave closeness, connection, and reassurance. But when emotions lead without grounding, intensity can overwhelm the very bond you’re trying to protect.",
+    owl: "The Thoughtful Observer. You process deeply and think before you speak, valuing clarity and logic. But staying in your head can leave emotions unmet and your partner feeling alone.",
+    rhino: "The Strong Protector. You step up fast when things feel off and take responsibility instinctively. But when strength turns into pressure, it can silence emotions instead of creating safety."
+  };
+
+  let resultText = titles[topAnimal];
+  let resultDesc = descs[topAnimal];
+
+  // Fallback if all scores = 0
+  if (!sheep && !love_bird && !owl && !rhino) {
+    resultText = titles.sheep;
+   resultDesc ="The Quiet Anchor. You bring calm, loyalty, and stability into relationships. But avoiding conflict and staying silent too long can slowly create distance instead of peace."
+;
+  }
+
+  document.getElementById("result-title").innerHTML = resultText;
+  document.getElementById("result-description").textContent = resultDesc;
+
+  // Greeting
+  document.getElementById("greeting").innerHTML =
+    `Hi <span class="highlight-name">${firstName}</span>, Here's your Exposed Breakdown👇`;
+
+  // CTA buttons → go to Page 2 and keep quiz params
+  const queryString = params.toString() + "&animal=" + topAnimal;
+
+const cta = document.getElementById("cta-btn");
+if (cta) {
+  cta.href = "https://biinse-ja.myshopify.com/pages/animal-business-quiz-page-2?" + queryString;
+  cta.textContent = "GET YOUR EXTENDED PLAN HERE!";
+}
+
+const ctaBottom = document.getElementById("cta-btn-bottom");
+if (ctaBottom) {
+  ctaBottom.href = "https://biinse-ja.myshopify.com/pages/animal-business-quiz-page-2?" + queryString;
+  ctaBottom.textContent = "GET YOUR EXTENDED PLAN HERE!";
+}
+
+  // SHOW/HIDE: only show the winning animal section
+  document.querySelectorAll(".animal-section").forEach(div => div.style.display = "none");
+  const winnerEl = document.getElementById(topAnimal + "-section");
+  if (winnerEl) winnerEl.style.display = "block";
+});
+</script>
+
+<!-- ========= PLAN SECTIONS (all 4 animals, only winner shows) ========= -->
+<div id="plan-section" style="max-width: 900px; margin: auto; padding: 2rem 1rem; font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(to bottom, #f7f7f7, #ffffff);">
+
+  <!-- ================= SHEEP SECTION ================= -->
+  <div class="animal-section" id="sheep-section">
+    <!-- Title -->
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MEN EXPOSED BREAKDOWN</h2>
+      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;"> Let me talk to you gently — but truthfully.  If you got Sheep, you’re probably the kind of person who doesn’t cause problems.  You stay. You’re loyal. You don’t quit. You don’t like drama.  You’ve likely told yourself: “I just want peace. - I don’t want to fight. Even, I’d rather let it go.”  And for a long time, that feels like the right thing.  But here’s the part nobody ever explains to you:  Peace without honesty slowly turns into distance.
+      </p>
+    </div>
+    
+    <!-- Cards -->
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">THIS IS HOW YOU MOVE THROUGH RELATIONSHIPS:</h3>
+        <p><strong>You are steady:</strong> When things get tense, you don’t explode. You don't storm off. You don't raise your voice.
+You go quiet. You pull back. You wait for things to pass.</p>
+        <p><strong>You tell yourself:</strong>
+<li> "It's not worth it".</li> 
+<li>"I'll deal with it later."</li>
+<li>"They'll calm down."</li>
+<p>You’re not weak. You're not lazy. You're not checked out. You're trying to keep the realtionship safe.</p>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">WHY PEOPLE FEEL SAFE WITH YOU:</h3>
+        <ul>
+<p>In the beginning, this personality feels comforting.</li></p>
+Your partner probably felt:
+<p><strong>Calm around you:</strong> You show up consistently, which make you the person everyone can rely on.</li>
+<p><strong>Accepted:</strong> You thrive in roles where you help others, building a tight-knit team that trusts you.</li>
+<p><strong>Not judged:</strong> You’re careful with decisions, ensuring that your actions are thoughtful and well-planned.</li>
+<p><strong>Like you wouldn’t leave:</strong> You build deep, lasting relationships with clients and colleagues, making them feel heard and valued.</li>
+<p>You’re dependable. You show up. You don't play games.
+<p>For someone who’s been around chaos or inconsistency, this feels grounding. This is often why they chose you.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">WHERE THINGS START TO SLIP:</h3>
+        <ul><p><strong>Here’s the part that’s hard to hear:</strong></p></li>
+          <li>When something bothers you, you don’t say it.</li>
+          <li>When something hurts, you swallow it.</li>
+          <li>When something feels unfair, you stay quiet.</li>
+          <li>You don’t want to rock the boat. But the feelings don’t disappear. They pile up. </li>
+<p><strong>And slowly, without meaning to:</strong></li>
+<li><em>You pull back emotionally</em></li>
+          <li><em>You stop sharing</em></li>
+          <li><em>You stop initiating</em></li>
+          <li><em>You feel unseen</em></li>
+<p>Your partner may not even know what changed. They just feel the distance.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">WHAT THIS LOOKS LIKE IN REAL LIFE:</h3>
+        <ul>
+        <p>This usually doesn’t show up as big fights. It shows up as Silence.</p>
+<p><strong>You might think:</strong></p>
+        <li>“It’s fine.</li>
+        <li>“I’m okay.”</li>
+        <li>“I don’t want to make it worse.”</li>
+<p>Over time, attraction fades — not because you’re bad, but because you disappeared inside the relationship.
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">HOW THIS PERSONALITY AFFECTS A PARTNER :</h3>
+        <ul>
+<p>Your partner doesn’t feel attacked by you. They feel unreached.</p>
+          <p><strong>When you stay quiet:</strong></p>
+          <li><em>They don’t know what you need</em></li>
+          <li><em>They don’t know what’s wrong</em></li>
+          <li><em>They don’t know how to get close again</em></li>
+          <li>They may try harder. Or they may stop trying. Both hurt.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Men Exposed</h3>
+        <h4 style="margin-top:1rem; font-weight:600;">WHAT THIS PERSONALITY REALLY NEEDS:</h4>
+        <ul>
+          <li>You don’t need to become aggressive.</li>
+          <li>You don’t need to become loud.</li>
+          <li>You don’t need to become someone else.</li>
+          <li>You need courage.</li>
+          <p><strong>Real peace comes from:</p></strong>
+          <li><em>Speaking early</em></li>
+          <li><em>Sharing needs clearly</em></li>
+          <li><em>Facing discomfort instead of avoiding it</em></li>
+          <li>When you speak up, something surprising happens: The relationship feels safer — not shakier.</li>
+        </ul>
+        <h4 style="margin-top:1rem; font-weight:600;">A FEW SHIFTS YOU CAN START MAKING NOW</h4>
+        <ul>
+          <li>Start small.</li>
+          <li>You don’t need big talks.</li>
+          <p><strong>Try this:</strong></p>
+          <li><em>Say what you feel before it turns into resentment</em></li>
+          <li><em>Share one need instead of staying silent</em></li>
+          <li><em>Speak even when your voice shakes</em></li>
+          <li><em>Don’t wait until you’re already shut down</em></li>
+          <li><em>Remind yourself: honesty creates closeness</em></li>
+          <li>These moments feel uncomfortable at first. But they bring you back into the relationship. </li>
+  
+        </ul>
+        <h4 style="margin-top:1rem; font-weight:600;">THE PART MOST PEOPLE MISS</h4>
+        <ul>
+          <li>Understanding this won’t automatically make it easier to speak up. </li>
+          <li>In real moments, your body will still want to stay quiet. </li>
+          <li>That’s why awareness alone doesn’t change the pattern.</li>
+          <li>This report helps you see why you disappear but it doesn’t train you how to stay present when it’s hard.</li>
+        </ul>
+        <h4 style="margin-top:1rem; font-weight:600;">WHAT COMES NEXT</h4>
+        <ul>
+          <li>If this felt accurate, it’s because it is.</li>
+          <li>The 30-Day Marriage Reset is designed to help this personality:</li>
+          <li><em>Find their voice without creating fights</em></li>
+          <li><em>Build confidence in hard conversations</em></li>
+          <li><em>Stay present instead of withdrawing </em></li>
+          <li>This report shows the pattern. The reset shows the practice.</li>
+        </ul>
+        <h4 style="margin-top:1rem; font-weight:600;">ONE LAST THING</h4>
+          <li>You matter in your relationship.</li>
+          <li>Your needs matter.</li>
+          <li>Your voice matter.</li>
+          <li>Your presence matters</li>
+          <li>Peace that costs you your voice isn’t peace.</li>
+        <ul>
+      </div>
+    </div>
+  </div> <!-- /#sheep-section -->
+
+  <!-- ================= LOVE BIRD SECTION ================= -->
+  <div class="animal-section" id="love_bird-section">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE ANIMAL BUSINESS QUIZ</h2>
+      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;">
+        <!-- INTRO: replace this with your Love Bird intro -->
+        You’re Magnetic, But Missing Structure
+You draw people in, energize rooms, and inspire trust. Influence comes naturally — but without systems and follow-through, momentum stalls. Right now, your wins rely on one-on-one charm, but scale demands process and consistency. Build structure around your energy, and you’ll turn charisma into lasting growth.
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">The Love Bird Reality Check:</h3>
+        <p><strong>You’re the life of the party. People are drawn to you.</strong> You talk, they listen. You know how to make people feel heard, important, and valued — and that’s why they trust you. You’re an influencer, and you lead naturally because people believe in your energy and enthusiasm.
+But here’s the catch: your charm and connection are powerful tools, but without structure, follow-through, and systems, you’re going to plateau.</p><p><strong>Right now, you’re winning based on your ability to connect one-on-one, but that doesn’t scale.</strong>
+You love compliments and positive feedback (who doesn’t?) but rejection feels like a punch to the gut. You’re naturally great at bringing in new opportunities, but you need systems and organization to turn that enthusiasm into long-term success.
+You’re not stuck — you just need to learn how to harness your natural gifts, turn them into systems, and follow through consistently to build the business you want</p>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Real Strengths:</h3>
+        <ul>
+          <li><strong>Charm & Charisma:</strong> You can connect with anyone in any room. People feel comfortable around you, and you create loyal, raving fans.</li><li><strong>Confidence:</strong> You’re confident, high-energy, and persuasive, which means you can win people over quickly and easily.</li><li><strong>Public Speaking & Networking:</strong> You thrive in social settings and can influence and inspire others to take action. Your energy and enthusiasm attract clients, employees, and opportunities.</li><li><strong>Leadership Potential:</strong> You can lead teams because you naturally inspire confidence and have a strong presence.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Blind Spots:</h3>
+        <ul>
+          <li><strong>Lack of Follow-Through:</strong> Your energy is infectious, but it’s easy for you to get scattered and lose focus, especially with tasks that feel tedious or don’t excite you.</li><li><strong>Avoiding Structure:</strong> You resist systems and organization because they can feel limiting and impersonal. But without them, you’re not able to scale the way you’d like.</li><li><strong>Rejection & Conflict:</strong> You struggle with rejection and tough feedback. You avoid conflict, which can hurt your ability to address issues within your team or with clients</li><li><strong>Overcommitting & People-Pleasing:</strong> You love to say yes to everyone, even when it stretches you too thin. You’ll agree to anything that makes people happy — but that can lead to burnout.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Untapped Opportunities:</h3>
+        <ul>
+          <li><strong>Referral System:</strong> You’re a natural at building relationships, so let’s formalize that with a structured referral systemthat brings you more business without extra effort.</li>
+<li><strong>Content Creation:</strong> Your natural charisma makes you a perfect content creator. Use your ability to speak and connect to produce videos, blogs, or live sessions that build your brand while engaging your audience.</li><li><strong>Sales Process Duplication:</strong> You can teach your team to sell like you — with charm and confidence — but you need to turn your sales process into a repeatable system so others can close with your same level of success</li><li><strong>Delegation & Team Building:</strong> You are a great motivator but need to delegate more to empower your team to take ownership, rather than doing everything yourself.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Real Threats:</h3>
+        <ul>
+          <li><strong> Burnout:</strong> You’re great at starting things, but lack of follow-through can leave you stretched thin, with unfinished tasks piling up.</li>
+<li><strong> Stagnation:</strong> Without systems and organization, you’ll find yourself stuck, overwhelmed, and unable to scale.</li><li><strong>Missed Opportunities:</strong> You’re leaving money on the table by not having a follow-up system in place and relying on your natural charm alone.</li><li><strong>Team Dependence:</strong> Because you’re such a natural leader, it’s hard to let go and trust your team to handle things. This can lead to micro-managing and inefficiency.</li>
+<li><strong>Bottom Line:</strong> Your ability to connect and influence people is your greatest strength. But to scale, you need to build systems around your natural gifts. This playbook will show you how to take your influence and turn it into a business that works for you, not the other way around.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">30-Day Domination Plan</h3>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 1 – Audit & Awareness</h4>
+        <ul><li>Audit your sales pipeline: Where do prospects fall off?</li><li>Define 5 relationship-driven KPIs for your team and post them publicly.</li><li>Write your sales script focused on building relationships, with discovery questions.</li><li>Set up your CRM or tracking system to monitor referrals and client feedback.</li></ul>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 2 – Quick Wins</h4>
+        <ul><li>Publish 1 emotional client story across all channels.</li><li>Set up daily roleplay for your team to practice the sales scripts.</li><li>Automate your follow-up reminders in your CRM or email system.</li><li>Launch your referral program and track it in your CRM.</li></ul>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 3 – Execution & Delegation</h4>
+        <ul><li>Assign KPIs to your team and hold them accountable for outcomes.</li><li>Write 1 SOP for a recurring decision or process, then delegate it.</li><li>Host your first team training on relationship-based selling and follow-ups.</li><li>Hold 1:1 meetings with your direct reports to track their personal/professional goals.</li></ul>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 4 – Scale & Sustain</h4>
+        <ul><li>Review your team’s performance against relationship-driven KPIs.</li><li>Double your weekly proof content output (client stories, testimonials).</li><li>Run another round of roleplay drills with the team.</li><li>Lock in rhythm: Monday huddles for KPIs, Friday reviews for client feedback.</li></ul>
+      </div>
+    </div>
+  </div> <!-- /#love_bird-section -->
+
+  <!-- ================= OWL SECTION ================= -->
+  <div class="animal-section" id="owl-section">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE ANIMAL BUSINESS QUIZ</h2>
+      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;">
+        <!-- INTRO: replace this with your Owl intro -->
+        Your Precision Is Power, But It’s Holding You Back
+You have the unique ability to organize chaos. Your mind works like a well-oiled machine that can break down the most complex problems and turn them into structured solutions.
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">The Owl Reality Check:</h3>
+        <p><strong> You’re the strategic planner</strong> — the one who sees patterns others miss, and that’s your power.
+But here’s the truth: you’re spending so much time perfecting systems and analysing data that you’re missing opportunities to execute quickly and move forward. Over-analysis is your blind spot. You love precision, but sometimes you need to move faster — and that requires trusting your process without waiting for perfection.</p><p><strong>
+You don’t need to stop thinking strategically</strong> — you just need to learn how to act on your insights without getting stuckin the details.
+      </p>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Real Strengths:</h3>
+        <ul>
+          <li><strong>Analytical Power:</strong> You can break down complex situations and see clear solutions where others get lost in the noise.</li>
+<li><strong>Process-Oriented:</strong> You thrive on systems, and you build your business to be efficient and organized.</li>
+<li><strong>Data-Driven:</strong> Your decisions are grounded in facts and numbers, minimizing risks and maximizing predictability.</li>
+<li><strong>Attention to Detail:</strong> You’re able to identify small issues before they become big problems, ensuring quality at every level.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Blind Spots:</h3>
+        <ul>
+          <li><strong>Perfectionism:</strong> You get bogged down in the details. You’re always looking for the perfect solution and that can cause indecision or delayed action.</li><li><em>Why it matters:</em> Perfection is the enemy of progress. You can’t wait for everything to be perfect — speed matters. The longer you wait for perfection, the longer it takes to see results.<li><strong>Slow Execution:</strong> You focus so much on getting things right that you delay decisions or avoid action.</li><li><em>Why it matters:</em> Your analysis is a strength, but it can also be your weakness if it prevents you from acting. Sometimes, “good enough” is all you need to move forward.</li>
+<li><strong>Rigidity:</strong> While your processes work, you can get too set in your ways and avoid adapting when needed.</li>
+<li><em>Why it matters:</em> The market changes fast. You need to learn how to adapt your systems quickly without getting stuck on the “perfect” solution.</li><li><strong>Delegation Issues:</strong> You fear that others won’t meet your standards, so you hold on to too many tasks, limiting your growth.
+<li><em>Why it matters:</em> You can’t scale if you’re doing everything yourself. You need to trust your team, empower them to execute, and let go of some control.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Untapped Opportunities:</h3>
+        <ul>
+          <li><strong>Speed + Precision:</strong> You can achieve the perfect balance between speed and precision if you trust your systemsand learn to make decisions faster.</li><li><strong>Sales Process Duplication:</strong> You can create repeatable systems for your team that ensure they close with the same precision you bring to every deal.</li><li><strong>Empowerment:</strong> You have the ability to build highly organized, self-sufficient teams, but you need to learn to empower them to take ownership without doing everything yourself.</li><li><strong>Optimizing Marketing:</strong> Your attention to detail can be an asset in marketing by focusing on data-driven campaignsthat can scale quickly once they’re optimized.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Real Threats:</h3>
+        <ul>
+          <li><strong>Analysis Paralysis:</strong> Too much perfectionism and analysis will prevent you from making the fast decisions needed to move your business forward.</li><li><em>What to do:</em> Take action even when things aren’t perfect. Commit to moving faster, testing as you go, and optimizing based on results, not assumptions.</li><li><strong>Stagnation:</strong> If you’re too rigid with your systems, you’ll miss out on opportunities to pivot or scale when the market demands it.</li><li><em>What to do:</em> Be open to tweaking your systems as you grow. Don’t be afraid to adapt — flexibility doesn’t mean losing quality.</li>
+<li><strong>Team Bottleneck:</strong> You’re not delegating effectively, and this limits growth and slows you down.</li>
+<li><em>What to do:</em> Delegate more and trust your team. Give them responsibility and accountability. They won’t do it exactly how you would, but that’s okay — you’ll have time to improve it later.</li>
+<li><strong>Missed Growth:</strong> Slow decision-making and reluctance to delegate can limit your growth because you’re spending too much time in the weeds rather than focusing on high-level strategy.</li>
+<li><em>What to do:</em> Get out of the weeds and start thinking strategically. Delegate tasks and make quicker decisions to move forward faster.</li>
+<li><strong>Bottom Line:</strong> You’re a master of strategy and systems. Now, it’s time to accelerate your execution by learning how to make decisions faster and trust your processes to scale without perfection getting in the way.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">30-Day Domination Plan</h3>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 1 – Audit & Awareness</h4>
+        <ul><li>Audit your sales pipeline: Where do you lose leads?</li><li>Define 5 KPIs for your team and track them weekly.</li><li>Write your sales script and ensure it’s systematic with discovery questions and closing steps.</li><li>Set up automated lead nurturing to ensure no prospect is left behind.</li></ul>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 2 – Quick Wins</h4>
+        <ul><li>Publish 1 content piece based on data-driven insights (blog, video, etc.).</li><li>Set up automated email sequences for follow-up and reminders.</li><li>Set up daily roleplay for your team to practice the sales script.</li><li>Launch your referral program and track it in your CRM.</li></ul>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 3 – Execution & Delegation</h4>
+        <ul><li>Assign KPIs to your team and track weekly performance.</li><li>Write 1 SOP for a recurring decision or process and delegate it.</li><li>Host your first team training on your sales process and relationship-building.</li><li>Hold 1:1 meetings to track personal and professional goals for each team member.</li></ul>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 4 – Scale & Sustain</h4>
+        <ul><li>Review your team’s performance against KPIs.</li><li>Double your weekly proof content output (client stories, testimonials).</li><li>Run another round of roleplay drills and assess team improvement.</li><li>Lock in rhythm: Monday huddles for KPIs, Friday reviews for client feedback.</li></ul>
+      </div>
+    </div>
+  </div> <!-- /#owl-section -->
+
+  <!-- ================= RHINO SECTION ================= -->
+  <div class="animal-section" id="rhino-section">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE ANIMAL BUSINESS QUIZ</h2>
+      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;">
+        <!-- INTRO: replace this with your Rhino intro -->
+        You’re Relentless, But Overloaded
+Your edge is speed — you move first, act decisively, and outpace competitors. Yet constant motion creates bottlenecks that should be handled by structure and support. Long-term scale comes from leverage, not extra effort: systems, people, and processes that free you to drive only the highest-value moves.
+      </p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">The Rhino Reality Check:</h3>
+        <p><strong>Known for Speed, Power, and Quick thinking:</strong> You’re the one people can’t catch. You charge through obstacles, make fast decisions, and win while others hesitate. But domination has levels.</p> <p><strong>Right now, you’re powerful</strong> — but you’re also carrying weight that should already be handled by systems, people, and process.
+If you don’t channel your drive into structure, you’ll keep working harder for wins you should be multiplying. The next level isn’t about more hustle. It’s about building a machine that’s as fierce as you are.
+</p>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Rhino Strengths:</h3>
+        <ul>
+          <li><strong>Speed kills competitors:</strong> You move before others react.</li>
+<li><strong>Fearless risk-taking:</strong> Market advantage comes because you make bold decisions.</li>
+<li><strong>Presence = influence:</strong> Your energy shifts rooms and wins clients.
+</li>
+<li><strong>Big Picture Drive:</strong> You’re already thinking bigger, so start acting bigger</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Blind Spots:</h3>
+        <ul>
+          <li><strong>Skipping depth:</strong> You’re rushing the pipeline and missing deals you could close.</li><li><strong>Burning out people:</strong> Your team survives on your energy, but they’re not empowered to run without you.</li><li><strong>Hating repetition:</strong> Systems break because you avoid the mundane.</li><li><strong>Leading by instinct:</strong> You trust your gut, but data shows where the real money leaks.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Untapped Opportunities:</h3>
+        <ul>
+          <li><strong>Brand authority:</strong> Document your wins and turn them into assets that sell without you.</li>
+<li><strong>Sales duplication:</strong> Clone your success by scripting your discovery process and teaching your team to close like you.</li><li><strong>Leadership bench:</strong> Instead of one key player, build 5 strong lieutenants who can scale with you.</li><li><strong>Operational leverage:</strong> Use dashboards, automation, and KPIs to free your time and multiply your success.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Your Real Threats:</h3>
+        <ul>
+          <li><strong>Growth ceilings:</strong> $3M–$8M is the choke point for many businesses. It’s not about hustle; it’s about scaling.</li><li><strong>Key-person risk:</strong> You’re the linchpin. If you’re gone, everything slows down.</li><li><strong>Randomness in systems:</strong> No systems leads to chaos. Chaos leads to profit loss.</li><li><strong>Losing talent:</strong> The wrong culture pushes out top people who can’t keep up.</li>
+        </ul>
+      </div>
+
+      <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">30-Day Domination Plan</h3>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 1 – Audit & Awareness</h4>
+        <ul><li>Audit your sales pipeline: Where are prospects dropping out?</li><li>Write down 5 decisions you control daily → choose 2 to delegate this month.</li><li>Install 1 KPI dashboard. Choose 3 key metrics for tracking performance in sales and ops.</li><li>Document 1 client win into a case study + video clip.</li><li>Set up a system for daily role play practice with your team before client calls</li></ul>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 2 – Quick Wins</h4>
+        <ul><li>Publish that case study across all channels.</li><li>Install 1 automation (follow-up, reporting, reminders).</li><li>Run 2 sales role plays with your team using your scripted discovery.</li><li>Shadow and switch with your team — roleplay their calls and provide feedback.</li><li>Have 1 team member shadow you on 3 calls, then reverse the process.</li></ul>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 3 – Execution & Delegation</h4>
+        <ul><li>Assign KPIs to 2 leaders, make them responsible for tracking their own team’s progress.</li><li>Write 1 SOP for a recurring decision → delegate permanently.</li><li>Hold your first scorecard meeting — review the numbers, no opinions.</li><li>Build an objection-handling document with your team’s top objections and scripted responses/li><li>Set up weekly 1:1s with direct reports to track personal/professional goals.</li></ul>
+        <h4 style="margin-top:1rem; font-weight:600;">Week 4 – Scale & Sustain</h4>
+        <ul><li>Review dashboard numbers with your team — identify trends, strengths, and weaknesses.</li><li>Double weekly content output (case studies, client stories, proof of success).</li><li>Lock in rhythm: Monday huddle for KPIs, Friday review for wins.</li><li>Revisit your sales script with the team and make adjustments based on feedback.</li></ul>
+      </div>
+    </div>
+  </div> <!-- /#rhino-section -->
+
+  <!-- ===================== CTA + Buttons ===================== -->
+  <div style="text-align:center; padding:3rem 1rem;">
+    <style>
+       .bounce-button-xl {
+         display:inline-block;
+         padding:24px 64px;
+         margin:1rem;
+         font-size:1.4rem;
+         font-weight:800;
+         text-decoration:none;
+         border-radius:999px;
+         box-shadow:0 10px 35px rgba(0,0,0,0.15);
+         transition:transform 0.3s ease, box-shadow 0.3s ease;
+         animation:pulseGradient 5s infinite linear;
+         background-size:200% 200%;
+         color:white;
+         background-image:linear-gradient(270deg, #1a325d, #1a325d, #1a325d);
+       }
+       .bounce-button-xl:hover {
+         transform:scale(1.07) translateY(-6px);
+         box-shadow:0 16px 50px rgba(0,0,0,0.2);
+       }
+       @keyframes pulseGradient {
+         0% { background-position: 0% 50%; }
+         50% { background-position: 100% 50%; }
+         100% { background-position: 0% 50%; }
+       }
+       @media (max-width: 500px) {
+         .bounce-button-xl { font-size: 1.1rem; padding: 18px 36px; }
+       }
+    </style>
+
+    <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;"> Self-awareness is the foundation of Emotional Intelligence. Which can be developed with practice!
+    </h3>
+    <p style="font-size:1.2rem; color:#444; max-width:700px; margin:0 auto 2rem auto; line-height:1.6;">
+      High EQ partners understand each other better, manage stress, and navigate challenges constructively, making relationships healthier and more resilient
+    </p>
+    <a href="https://coaching.itsrichardmartinez.com/calendar-page" class="bounce-button-xl">
+      BOOK YOUR FREE CONSULTATION
+    </a>
+
+    <!-- ✅ new duplicate CTA -->
+    <a id="cta-btn-bottom" class="btn alt-btn" style="display:inline-block; margin-top:20px;">
+      GET YOUR EXTENDED PLAN HERE!
+    </a>
+  </div> <!-- /#plan-section -->
