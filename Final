@@ -173,15 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const owlPercent = total ? Math.round((owl / total) * 100) : 0;
   const rhinoPercent = total ? Math.round((rhino / total) * 100) : 0;
 
-  document.getElementById("score-sheep").textContent = sheepPercent + "%";
-  document.getElementById("bar-sheep").style.width = sheepPercent + "%";
-  document.getElementById("score-love_bird").textContent = love_birdPercent + "%";
-  document.getElementById("bar-love_bird").style.width = love_birdPercent + "%";
-  document.getElementById("score-owl").textContent = owlPercent + "%";
-  document.getElementById("bar-owl").style.width = owlPercent + "%";
-  document.getElementById("score-rhino").textContent = rhinoPercent + "%";
-  document.getElementById("bar-rhino").style.width = rhinoPercent + "%";
-
   // Decide winner with deterministic top-two tiebreak
   const scoresRaw = { sheep, love_bird, owl, rhino };
   const secondaryOrder = ["sheep", "love_bird", "owl", "rhino"];
