@@ -126,7 +126,7 @@
  
 <!-- ✅ Top summary / bars -->
 <div class="quiz-results">
-  <h1>Your Men Exposed Results!</h1>
+  <h1>Your Marriage Growth Identifer Results!</h1>
   <h3 id="greeting" class="greeting-text"></h3>
   <h2 id="result-title"></h2>
   <p id="result-description" class="summary-text"></p>
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Greeting
   document.getElementById("greeting").innerHTML =
-    `Hi <span class="highlight-name">${firstName}</span>, Here's your Exposed Breakdown👇`;
+    `Hi <span class="highlight-name">${firstName}</span>, Here's your personality Breakdown👇`;
 
   // CTA buttons → go to Page 2 and keep quiz params
   const queryString = params.toString() + "&animal=" + topAnimal;
@@ -252,7 +252,7 @@ if (ctaBottom) {
   <div class="animal-section" id="sheep-section">
     <!-- Title -->
     <div style="text-align: center; margin-bottom: 3rem;">
-      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MEN EXPOSED BREAKDOWN</h2>
+      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MARRIAGE GROWTH OPPORTUNITY BREAKDOWN</h2>
       <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;"> Let me talk to you gently — but truthfully.  If you got Sheep, you’re probably the kind of person who doesn’t cause problems.  You stay. You’re loyal. You don’t quit. You don’t like drama.  You’ve likely told yourself: “I just want peace. - I don’t want to fight. Even, I’d rather let it go.”  And for a long time, that feels like the right thing.  But here’s the part nobody ever explains to you:  Peace without honesty slowly turns into distance.
       </p>
     </div>
@@ -325,7 +325,7 @@ Your partner probably felt:
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Men Exposed</h3>
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Oppurtunites</h3>
         <h4 style="margin-top:1rem; font-weight:600;">WHAT THIS PERSONALITY REALLY NEEDS:</h4>
         <ul>
           <li>You don’t need to become aggressive.</li>
@@ -381,7 +381,7 @@ Your partner probably felt:
   <!-- ================= LOVE BIRD SECTION ================= -->
   <div class="animal-section" id="love_bird-section">
     <div style="text-align: center; margin-bottom: 3rem;">
-      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MEN EXPOSED BREAKDOWN</h2>
+      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MARRIAGE GROWTH OPPORTUNITY BREAKDOWN</h2>
       <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;"> Let me talk to you like a human for a minute. If you got Love Bird, it means one simple thing: You don’t just love. You feel love. You notice tone. You notice distance. You notice when something shifts — even if nobody says a word. You’re the person who feels it first. And most of the time, that makes you the one who hurts first too.
       </p>
     </div>
@@ -456,7 +456,7 @@ Your partner probably felt:
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Men Exposed</h3>
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Oppurtunites</h3>
         <h4 style="margin-top:1rem; font-weight:600;">WHAT THIS PERSONALITY REALLY NEEDS:</h4>
         <ul>
           <p>Connection grows when emotion is paired with:</p>
@@ -510,7 +510,7 @@ Your partner probably felt:
   <!-- ================= OWL SECTION ================= -->
   <div class="animal-section" id="owl-section">
     <div style="text-align: center; margin-bottom: 3rem;">
-      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MEN EXPOSED BREAKDOWN</h2>
+      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MARRIAGE GROWTH OPPORTUNITY BREAKDOWN</h2>
       <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;">
         <!-- INTRO: replace this with your Owl intro -->
         Let me talk to you in a way people usually don’t.  If you got Owl, you’re not cold. You’re not distant on purpose. You’re not uncaring. You think deeply. You process internally. You don’t react fast because you want to get it right. And most of the time, people mistake that for not feeling much. That’s not true. You feel — you just don’t show it the same way.
@@ -528,7 +528,7 @@ Your partner probably felt:
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">WHY PEOPLE ARE DRWAN TO YOU:</h3>
+        <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">WHY PEOPLE ARE DRAWN TO YOU:</h3>
         <ul>
 <p>In the beginning, this personality feels safe in a different way.</li></p>
 Your partner probably felt:
@@ -585,7 +585,7 @@ Your partner probably felt:
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Men Exposed</h3>
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Oppurtunites</h3>
         <h4 style="margin-top:1rem; font-weight:600;">WHAT THIS PERSONALITY REALLY NEEDS:</h4>
         <ul>
           <p>You don’t need more understanding. You need emotional presence.</p>
@@ -637,7 +637,7 @@ Your partner probably felt:
   <!-- ================= RHINO SECTION ================= -->
   <div class="animal-section" id="rhino-section">
     <div style="text-align: center; margin-bottom: 3rem;">
-      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MEN EXPOSED BREAKDOWN</h2>
+      <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MARRIAGE GROWTH OPPORTUNITY BREAKDOWN</h2>
       <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;">Let me talk to you for a second. If you got Rhino, it’s not by accident. This means when things feel off, you don’t freeze. You move. You step in. You take charge. You’ve probably been the one holding things together for a long time.
       <p>And here’s the truth most people won’t tell you:</p>
       <p>Your strength is real. But the way it shows up in relationships can push the very person you love away — even though that’s the last thing you want</li>
@@ -707,7 +707,7 @@ People trust you because:
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Men Exposed</h3>
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Oppurtunites</h3>
         <h4 style="margin-top:1rem; font-weight:600;">WHAT THIS PERSONALITY NEEDS TO LEARN:</h4>
         <ul>
           <p>You don’t need to stop leading. You need to slow it down.</p>
