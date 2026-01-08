@@ -122,6 +122,18 @@
 
  /* helper for hidden sections */
  .animal-section { display: none; }
+
+/* hide score text + horizontal bars (logic still runs) */
+.bar-bg { 
+  display: none !important; 
+}
+
+#score-sheep,
+#score-love_bird,
+#score-owl,
+#score-rhino {
+  display: none !important;
+}
 </style>
  
 <!-- ✅ Top summary / bars -->
@@ -132,16 +144,16 @@
   <p id="result-description" class="summary-text"></p>
 
   <!-- Scores -->
-  <p>🐑 Sheep Personality: <span id="score-sheep">0%</span></p>
+  <p> <span id="score-sheep"></span></p>
   <div class="bar-bg"><div class="bar" id="bar-sheep"></div></div>
  
-  <p>🦜 Love Bird Personality: <span id="score-love_bird">0%</span></p>
+  <p><span id="score-love_bird"></span></p>
   <div class="bar-bg"><div class="bar" id="bar-love_bird"></div></div>
  
-  <p>🦉 Owl Personality: <span id="score-owl">0%</span></p>
+  <p><span id="score-owl"></span></p>
   <div class="bar-bg"><div class="bar" id="bar-owl"></div></div>
  
-  <p>🦏 Rhino Personality: <span id="score-rhino">0%</span></p>
+  <p><span id="score-rhino"></span></p>
   <div class="bar-bg"><div class="bar" id="bar-rhino"></div></div>
 </div>
  
@@ -185,10 +197,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Result banner text
   const titles = {
-    sheep: "You mainly identify under <span class='highlight-block'>Sheep (The Steadfast)</span>🐑",
-    love_bird: "You mainly identify under <span class='highlight-block'>Love Bird (The Connector)</span>🦜",
-    owl: "You mainly identify under <span class='highlight-block'>Owl (The Strategist)</span>🦉",
-    rhino: "You mainly identify under <span class='highlight-block'>Rhino (The Driver)</span>🦏"
+    sheep: "Your personality identifies under the: <span class='highlight-block'>Sheep (The Steadfast)</span>🐑",
+    love_bird: "Your personality identifies under the: <span class='highlight-block'>Love Bird (The Connector)</span>🦜",
+    owl: "Your personality identifies under the: <span class='highlight-block'>Owl (The Strategist)</span>🦉",
+    rhino: "Your personality identifies under the: <span class='highlight-block'>Rhino (The Driver)</span>🦏"
   };
   const descs = {
     sheep:"The Quiet Anchor. You bring calm, loyalty, and stability into relationships. But avoiding conflict and staying silent too long can slowly create distance instead of peace.",
@@ -631,8 +643,6 @@ Your partner probably felt:
       <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MARRIAGE GROWTH OPPORTUNITY BREAKDOWN</h2>
       <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;">Let me talk to you for a second. If you got Rhino, it’s not by accident. This means when things feel off, you don’t freeze. You move. You step in. You take charge. You’ve probably been the one holding things together for a long time.
       <p>And here’s the truth most people won’t tell you:</p>
-      <p>Your strength is real. But the way it shows up in relationships can push the very person you love away — even though that’s the last thing you want</li>
-      </p>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 2rem;">
