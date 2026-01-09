@@ -138,7 +138,7 @@
  
 <!-- ✅ Top summary / bars -->
 <div class="quiz-results">
-  <h1>Your Marriage Growth Identifer Results!</h1>
+  <h1>Your Marriage Growth Identifier Results!</h1>
   <h3 id="greeting" class="greeting-text"></h3>
   <h2 id="result-title"></h2>
   <p id="result-description" class="summary-text"></p>
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Greeting
   document.getElementById("greeting").innerHTML =
-    `Hi <span class="highlight-name">${firstName}</span>, Here's your personality Breakdown👇`;
+    `Hi <span class="highlight-name">${firstName}</span>, Here's your personality breakdown`;
 
   // CTA buttons → go to Page 2 and keep quiz params
   const queryString = params.toString() + "&animal=" + topAnimal;
@@ -256,7 +256,7 @@ if (ctaBottom) {
     <!-- Title -->
     <div style="text-align: center; margin-bottom: 3rem;">
       <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MARRIAGE GROWTH OPPORTUNITY BREAKDOWN</h2>
-      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;"> Let me talk to you gently — but truthfully.  If you got Sheep, you’re probably the kind of person who doesn’t cause problems.  You stay calm. You’re loyal. You don’t quit. You don’t like drama.  You’ve likely told yourself: “I just want peace. - I don’t want to fight. Even, I’d rather let it go.”  And for a long time, that feels like the right thing.  But here’s the part nobody ever explains to you:  Peace without honesty slowly turns into distance.
+      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;"> Let me talk to you gently — but truthfully.  If you got the Sheep, you’re probably the kind of person who doesn’t cause problems.  You stay calm. You’re loyal. You don’t quit. You don’t like drama.  You’ve likely told yourself: “I just want peace. I don’t want to fight. I’d rather let it go.”  And for a long time, that feels like the right thing.  But here’s the part nobody ever explains to you:  Peace without honesty slowly turns into distance.
       </p>
     </div>
     
@@ -270,7 +270,7 @@ You go quiet. You pull back. You wait for things to pass.</p>
 <li> "It's not worth it".</li> 
 <li>"I'll deal with it later."</li>
 <li>"They'll calm down."</li>
-<p>You’re not weak. You're not lazy. You're not checked out. You're trying to keep the realtionship safe.</p>
+<p>You’re not weak. You're not lazy. You're not checked out. You're trying to keep the relationship safe.</p>
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
@@ -278,9 +278,9 @@ You go quiet. You pull back. You wait for things to pass.</p>
         <ul>
 <p>In the beginning, this personality feels comforting.</li></p>
 Your partner probably felt:
-<p><strong>Calm around you:</strong> You show up consistently, which make you the person everyone can rely on.</li>
-<p><strong>Accepted:</strong> You thrive in roles where you help others, building a tight-knit team that trusts you.</li>
-<p><strong>Not judged:</strong> You’re careful with decisions, ensuring that your actions are thoughtful and well-planned.</li>
+<p><strong>Calm around you:</strong> You show up consistently, which makes you the person everyone can rely on.</li>
+<p><strong>Accepted:</strong> You thrive in roles where you help others, building a tight-knit team that trusts you. You have an open perspective of being kind to others. You see the good in everything.</li>
+<p><strong>Not judged:</strong> You’re careful with decisions, ensuring that your actions are thoughtful and well-planned. You understand people and relate to them on a personal level</li>
 <p><strong>Like you wouldn’t leave:</strong> You build deep, lasting relationships with clients and colleagues, making them feel heard and valued.</li>
 <p>You’re dependable. You show up. You don't play games.
 <p>For someone who’s been around chaos or inconsistency, this feels grounding. This is often why they chose you.</li>
@@ -308,7 +308,7 @@ Your partner probably felt:
         <ul>
         <p>This usually doesn’t show up as big fights. It shows up as Silence.</p>
 <p><strong>You might think:</strong></p>
-        <li>“It’s fine.</li>
+        <li>“It’s fine.” </li>
         <li>“I’m okay.”</li>
         <li>“I don’t want to make it worse.”</li>
 <p>Over time, attraction fades — not because you’re bad, but because you disappeared inside the relationship.
@@ -328,7 +328,7 @@ Your partner probably felt:
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Oppurtunites</h3>
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Opportunites</h3>
         <h4 style="margin-top:1rem; font-weight:600;">WHAT THIS PERSONALITY REALLY NEEDS:</h4>
         <ul>
           <li>You don’t need to become aggressive.</li>
@@ -342,10 +342,9 @@ Your partner probably felt:
           <li>When you speak up, something surprising happens: The relationship feels safer — not shakier.</li>
         </ul>
         <h4 style="margin-top:1rem; font-weight:600;">A FEW SHIFTS YOU CAN START MAKING NOW</h4>
-        <ul>
+        <ul> <p><strong>Try this:</strong></p>
           <li>Start small.</li>
           <li>You don’t need big talks.</li>
-          <p><strong>Try this:</strong></p>
           <li><em>Say what you feel before it turns into resentment</em></li>
           <li><em>Share one need instead of staying silent</em></li>
           <li><em>Speak even when your voice shakes</em></li>
@@ -361,9 +360,8 @@ Your partner probably felt:
           <li>That’s why awareness alone doesn’t change the pattern.</li>
           <li>This report helps you see why you disappear but it doesn’t train you how to stay present when it’s hard.</li>
         </ul>
-        <h4 style="margin-top:1rem; font-weight:600;">WHAT COMES NEXT</h4>
+        <h4 style="margin-top:1rem; font-weight:600;">WHAT COMES NEXT — (If this felt accurate, it’s because it is.)</h4>
         <ul>
-          <li>If this felt accurate, it’s because it is.</li>
           <li>The 30-Day Marriage Reset is designed to help this personality:</li>
           <li><em>Find their voice without creating fights</em></li>
           <li><em>Build confidence in hard conversations</em></li>
@@ -373,7 +371,7 @@ Your partner probably felt:
         <h4 style="margin-top:1rem; font-weight:600;">ONE LAST THING</h4>
           <li>You matter in your relationship.</li>
           <li>Your needs matter.</li>
-          <li>Your voice matter.</li>
+          <li>Your voice matters.</li>
           <li>Your presence matters</li>
           <li>Peace that costs you your voice isn’t peace.</li>
         <ul>
@@ -385,7 +383,7 @@ Your partner probably felt:
   <div class="animal-section" id="love_bird-section">
     <div style="text-align: center; margin-bottom: 3rem;">
       <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MARRIAGE GROWTH OPPORTUNITY BREAKDOWN</h2>
-      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;"> Let me talk to you like a human for a minute. If you got Love Bird, it means one simple thing: You don’t just love. You feel love. You notice tone. You notice distance. You notice when something shifts — even if nobody says a word. You’re the person who feels it first. And most of the time, that makes you the one who hurts first too.
+      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;"> Let me talk to you like a human for a minute. If you got the Love Bird, it means one simple thing: You don’t just love. You feel love. You notice tone. You notice distance. You notice when something shifts — even if nobody says a word. You’re the person who feels it first. And most of the time, that makes you the one who hurts first too.
       </p>
     </div>
 
@@ -406,7 +404,7 @@ Your partner probably felt:
         <ul>
 <p>In the beginning, this personality feels like home.</li></p>
 Your partner probably felt:
-<p><strong>Wanted:</strong> You showed up emotionally..</li>
+<p><strong>Wanted:</strong> You showed up emotionally.</li>
 <p><strong>Seen:</strong> You cared.</li>
 <p><strong>Desired:</strong> You expressed love without being asked. .</li>
 <p><strong>Important:</strong> You build deep, lasting relationships with clients and colleagues, making them feel heard and valued.</li>
@@ -417,7 +415,8 @@ Your partner probably felt:
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
         <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">WHERE THINGS START TO SLIP:</h3>
-        <ul><p><strong>Here’s the part nobody explains to you:</strong> When emotions spike, you move toward the moment instead of slowing it down. You may:</p></li>
+        <ul><p><strong>Here’s the part nobody explains to you:</strong> When emotions spike, you move toward the moment instead of slowing it down.</p>
+<p>You may:</p>
           <li>Talk things out before the other person is ready.</li>
           <li>Say more than you mean.</li>
           <li>React instead of pausing.</li>
@@ -459,7 +458,7 @@ Your partner probably felt:
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Oppurtunites</h3>
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Opportunities</h3>
         <h4 style="margin-top:1rem; font-weight:600;">WHAT THIS PERSONALITY REALLY NEEDS:</h4>
         <ul>
           <p>Connection grows when emotion is paired with:</p>
@@ -491,9 +490,9 @@ Your partner probably felt:
           <li>That’s why awareness alone doesn’t break the cycle. </li>
           <li>This report helps you see the pattern — but patterns only change when you practice new responses under pressure.</li>
         </ul>
-        <h4 style="margin-top:1rem; font-weight:600;">WHAT COMES NEXT</h4>
+        <h4 style="margin-top:1rem; font-weight:600;">WHAT COMES NEXT — (If this felt accurate, it’s because it is.)</h4>
         <ul>
-          <p>If this felt accurate, it’s because it is.</p>
+          <p>
           <li>The 30-Day Marriage Reset takes this exact wiring and helps you:</li>
           <li><em>Stay emotionally connected without overwhelming the moment</em></li>
           <li><em>Build consistency that creates trust</em></li>
@@ -501,7 +500,7 @@ Your partner probably felt:
           <p>This report shows what’s happening. The reset shows how to change it.</p>
         </ul>
         <h4 style="margin-top:1rem; font-weight:600;">ONE LAST THING</h4>
-          <p>"You’re not “too much.”</p>
+          <p>You’re not “too much.”</p>
           <li>You’re just not meant to lead with emotion alone.</li>
           <li>When your heart is grounded, it becomes powerful.</li>
           <li>Your presence matters</li>
@@ -516,7 +515,7 @@ Your partner probably felt:
       <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MARRIAGE GROWTH OPPORTUNITY BREAKDOWN</h2>
       <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;">
         <!-- INTRO: replace this with your Owl intro -->
-        Let me talk to you in a way people usually don’t.  If you got Owl, you’re not cold. You’re not distant on purpose. You’re not uncaring. You think deeply. You process internally. You don’t react fast because you want to get it right. And most of the time, people mistake that for not feeling much. That’s not true. You feel — you just don’t show it the same way.
+        Let me talk to you in a way people usually don’t.  If you got the Owl, you’re not cold. You’re not distant on purpose. You’re not uncaring. You think deeply. You process internally. You don’t react fast because you want to get it right. And most of the time, people mistake that for not feeling much. That’s not true. You feel — you just don’t show it the same way.
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 2rem;">
@@ -524,7 +523,7 @@ Your partner probably felt:
         <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">THIS IS HOW YOU MOVE THROUGH RELATIONSHIPS:</h3>
         <p><strong>You don’t rush into things.</strong> When something happens, you think first. You replay conversations. You try to understand what went wrong. You look for patterns. Your mind stays busy even when you’re quiet.</p>
         <p><strong>You tell yourself:</strong>
-<li>"Let me think this through".</li> 
+<li>"Let me think this through."</li> 
 <li>"I need to understand this."</li>
 <li>"I don’t want to say the wrong thing."</li>
 <p>That sounds responsible. And in many areas of life, it is. But relationships don’t break because of wrong answers. They break because of emotional distance.</p>
@@ -588,7 +587,7 @@ Your partner probably felt:
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Oppurtunites</h3>
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Opportunities</h3>
         <h4 style="margin-top:1rem; font-weight:600;">WHAT THIS PERSONALITY REALLY NEEDS:</h4>
         <ul>
           <p>You don’t need more understanding. You need emotional presence.</p>
@@ -601,8 +600,8 @@ Your partner probably felt:
         </ul>
         <h4 style="margin-top:1rem; font-weight:600;">A FEW SHIFTS YOU CAN START MAKING NOW:</h4>
         <ul>
-          <li>You don’t need big speeches.</li>
           <p><strong>Start here:</strong></p>
+<li>You don’t need big speeches.</li>
           <li><em>When someone shares feelings, don’t explain — acknowledge</em></li>
           <li><em>Say “That makes sense” before saying anything else</em></li>
           <li><em>Sit in silence instead of filling it</em></li>
@@ -617,9 +616,8 @@ Your partner probably felt:
           <li>You can fully understand the situation and still leave your partner feeling alone. </li>
           <li>This report helps you see the pattern — but patterns don’t break without practice.</li>
         </ul>
-        <h4 style="margin-top:1rem; font-weight:600;">WHAT COMES NEXT:</h4>
+        <h4 style="margin-top:1rem; font-weight:600;">WHAT COMES NEXT — (If this felt accurate, it’s because it is.)</h4>
         <ul>
-          <li>If this felt accurate, it’s because it is.</li>
           <li>The 30-Day Marriage Reset is designed to help this personality:</li>
           <li><em>Practice emotional presence</em></li>
           <li><em>Learn how to respond instead of analyze</em></li>
@@ -641,10 +639,7 @@ Your partner probably felt:
   <div class="animal-section" id="rhino-section">
     <div style="text-align: center; margin-bottom: 3rem;">
       <h2 style="font-size: 2.3rem; font-weight: 700; color: #005181;">THE MARRIAGE GROWTH OPPORTUNITY BREAKDOWN</h2>
-      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;">Let me talk to you for a second. If you got Rhino, it’s not by accident. This means when things feel off, you don’t freeze. You move. You step in. You take charge. You’ve probably been the one holding things together for a long time.
-      <p>And here’s the truth most people won’t tell you:</p>
-      <p></li>
-      </p>
+      <p style="font-size: 1.2rem; color: #333; max-width: 700px; margin: auto;">Let me talk to you for a second. If you got the Rhino, it’s not by accident. This means when things feel off, you don’t freeze. You move. You step in. You take charge. You’ve probably been the one holding things together for a long time.</li></p>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 2rem;">
@@ -710,7 +705,7 @@ People trust you because:
       </div>
 
       <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Oppurtunites</h3>
+        <h3 style="color:#1a325d; font-size:2.0rem; font-weight:700;">The Details of Marriage Growth Opportunities</h3>
         <h4 style="margin-top:1rem; font-weight:600;">WHAT THIS PERSONALITY NEEDS TO LEARN:</h4>
         <ul>
           <p>You don’t need to stop leading. You need to slow it down.</p>
@@ -723,9 +718,9 @@ People trust you because:
         </ul>
         <h4 style="margin-top:1rem; font-weight:600;">A FEW SHIFTS YOU CAN START MAKING NOW:</h4>
         <ul>
-          <li>This is not the full fix — just a starting point.</li>
           <p><strong>Try this:</strong></p>
-          <li><em>Lower your voice before making your point</em></li>
+ <li>This is not the full fix — just a starting point.</li>
+<li><em>Lower your voice before making your point</em></li>
           <li><em>Let them finish without jumping in</em></li>
           <li><em>Ask how they feel before offering a solution</em></li>
           <li><em>Slow the conversation down on purpose</em></li>
@@ -738,7 +733,7 @@ People trust you because:
           <p>Seeing this doesn’t mean it will change by itself.  You can understand this perfectly and still react the same way when emotions rise.  That’s why patterns don’t break without structure.</li>
           <p>This report shows you what’s happening. It doesn’t train you how to respond differently under pressure.  </li>
         </ul>
-        <h4 style="margin-top:1rem; font-weight:600;">WHAT COMES NEXT:</h4>
+        <h4 style="margin-top:1rem; font-weight:600;">WHAT COMES NEXT — (If this felt accurate, it’s because it is.)</h4>
         <ul>
           <li>If this felt like someone finally understood you, that’s not luck.</li>
           <li>The 30-Day Marriage Reset takes this exact wiring and teaches you:</li>
@@ -793,6 +788,7 @@ People trust you because:
     <p style="font-size:1.2rem; color:#444; max-width:700px; margin:0 auto 2rem auto; line-height:1.6;">
       Learn how to create healthy relationships with others and maintain the art of devotion throughout your life
     </p>
+<p style="font-size:1.2rem; color:#444; max-width:700px; margin:0 auto 2rem auto; line-height:1.6;">We will email you these results!</p>
     <a href="https://www.itsrichardmartinez.com/offers/DeGYjftG/checkout" class="bounce-button-xl">
       The Art of Relationships Online Program
     </a>
