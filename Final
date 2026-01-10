@@ -767,7 +767,7 @@ People trust you because:
          animation:pulseGradient 5s infinite linear;
          background-size:200% 200%;
          color:white;
-         background-image:linear-gradient(270deg, #1a325d, #1a325d, #1a325d);
+         background-image:linear-gradient(270deg, #DB0505, #DB0505, #DB0505);
        }
        .bounce-button-xl:hover {
          transform:scale(1.07) translateY(-6px);
@@ -786,10 +786,12 @@ People trust you because:
     <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;"> You can't build a great relationship without knowing how to start one
     </h3>
     <p style="font-size:1.2rem; color:#444; max-width:700px; margin:0 auto 2rem auto; line-height:1.6;">
-      Learn how to create healthy relationships with others and maintain the art of devotion throughout your life
+      Learn how to create healthy relationships with others and maintain the art of devotion throughout your life.
     </p>
-<p style="font-size:1.2rem; color:#444; max-width:700px; margin:0 auto 2rem auto; line-height:1.6;">We will email you these results!</p>
+<p style="font-size:1.2rem; color:#444; max-width:700px; margin:0 auto 2rem auto; line-height:1.6;">We are emailing you these results! Please check out more:
+</p>
+<p style="color:#1a325d; font-size:1.5rem; font-weight:700;">The Art of Relationships Online Program</p>
     <a href="https://www.itsrichardmartinez.com/offers/DeGYjftG/checkout" class="bounce-button-xl">
-      The Art of Relationships Online Program
+      CLICK HERE
     </a>
   </div> <!-- /#plan-section -->
